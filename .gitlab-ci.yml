@@ -1,0 +1,21 @@
+stages:
+  - deploy
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_HOST: tcp://docker:2375/
+
+deploy-graalvm-clojure-to-dockerhub:
+  stage: deploy
+  image: docker:stable
+  when: manual
+  only:
+    - master
+  services:
+    - docker:dind
+  before_script:
+    - echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+  script:
+    - cd graalvm-clojure
+    - docker build -t tokenmill/clojure:graalvm-ce-19.0.0-tools-deps-1.10.0.442 .
+    - docker build -t tokenmill/clojure:latest .
