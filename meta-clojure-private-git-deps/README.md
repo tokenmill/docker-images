@@ -1,4 +1,4 @@
-# Clojure dependencies in private repositories
+# Clojure dependencies in private Git repositories
 
 ## How to use
 
