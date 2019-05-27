@@ -7,12 +7,12 @@ Create a Docker image:
 docker build -f Dockerfile --build-arg ssh_prv_key="$(cat ~/.ssh/id_rsa)" --build-arg ssh_pub_key="$(cat ~/.ssh/id_rsa.pub)" -t tokenmill/clojure-private-git-deps:test  .
 ```
 
-Run start the docker:
+Run the docker container with an interactive bash shell:
 ```bash
 docker run -it tokenmill/clojure-private-git-deps:test bash
 ```
 
-Start a REPL with your private Clojure module: 
+Start a Clojure REPL with your private Clojure module: 
 ```bash
 clojure -Sdeps '{:deps {me/module {:git/url "git@gitlab.com:me/module.git" :sha "2aa1c686760cff280b7b65b825a4321bdb8de53e"}}}'
 ```
