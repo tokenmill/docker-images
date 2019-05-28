@@ -19,9 +19,11 @@ clojure -Sdeps '{:deps {me/module {:git/url "git@gitlab.com:me/module.git" :sha 
 
 Voila!
 
-As of now, GitHub, GitLab, and BitBucket hots are supported as sources of private Git repositories.
+## Notes on implementation
 
-To add another source of host repositories add to Dockerfile:
+As of now, GitHub, GitLab, and BitBucket hosts are supported as sources of private Git repositories.
+
+To configure another host for git repositories add a line to Dockerfile:
 ```dockerfile
 RUN ssh-keyscan your-git.host >> /root/.ssh/known_hosts
 ```
